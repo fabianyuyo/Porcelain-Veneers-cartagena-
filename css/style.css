@@ -1,0 +1,619 @@
+:root {
+    --color-primary: #B8860B; /* Dorado Profundo (ORO PROFUNDO) */
+    --color-secondary: #D4AF37; /* Dorado Ligeramente Más Claro (para hover) */
+    --color-dark-bg: #1A1A1A; /* Negro muy oscuro para fondos */
+    --color-dark-card: rgba(30, 30, 30, 0.9); /* Negro semi-transparente para tarjetas */
+    --color-text-light: #F0F0F0; /* Blanco suave para texto sobre fondos oscuros */
+    --color-text-dark: #333333; /* Gris oscuro para texto sobre fondos claros */
+    --color-white: #FFFFFF; /* Blanco puro */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --spacing-unit: 20px; /* Unidad base para espaciado */
+}
+
+/* --- Reseteo y Estilos Generales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    /* Mantén la imagen de fondo y el color de respaldo */
+    background-image: url('../img/black_pearlescent_texture.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    background-color: var(--color-dark-bg); 
+}
+
+/* --- Tipografía --- */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); 
+    color: var(--color-primary);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    color: var(--color-primary); 
+}
+
+h3 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    margin-bottom: var(--spacing-unit);
+    color: var(--color-primary); 
+}
+
+p {
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-unit);
+    text-align: justify;
+}
+
+.section-description {
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+    color: var(--color-text-light); 
+    max-width: 800px;
+    margin: calc(var(--spacing-unit) * -0.5) auto calc(var(--spacing-unit) * 2) auto;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* --- Botones CTA (Call to Action) --- */
+.cta-button {
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white); 
+    padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.75);
+    border-radius: 50px;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: var(--spacing-unit);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+}
+
+.cta-button i {
+    margin-right: 10px;
+    font-size: 1.1em; 
+}
+
+/* Botón de WhatsApp */
+.whatsapp-button {
+    background-color: #25D366; /* Verde brillante de WhatsApp */
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851; /* Verde un poco más oscuro al pasar el cursor */
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Botón de Instagram */
+.instagram-button {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* Colores de Instagram */
+    box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
+}
+
+.instagram-button:hover {
+    background: linear-gradient(45deg, #e6683c 0%, #dc2743 25%, #cc2366 50%, #bc1888 75%, #f09433 100%); /* Efecto al pasar el cursor */
+    box-shadow: 0 8px 20px rgba(225, 48, 108, 0.6);
+}
+
+/* --- Secciones Generales --- */
+section {
+    position: relative; 
+    padding: calc(var(--spacing-unit) * 4) var(--spacing-unit); 
+    z-index: 1; 
+}
+
+.dark-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); 
+    z-index: -1; 
+}
+
+.dark-section h2, .dark-section h3 {
+    color: var(--color-primary);
+}
+.dark-section p, .dark-section .section-description {
+    color: var(--color-text-light);
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    overflow: hidden;
+    background-color: var(--color-dark-bg); 
+}
+
+.hero-background-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    display: flex; 
+}
+
+.hero-background-slides img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6); 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; 
+    animation: fadeInOut 25s infinite; 
+}
+
+.hero-background-slides img:nth-child(1) {
+    animation-delay: 0s;
+}
+.hero-background-slides img:nth-child(2) {
+    animation-delay: 8.33s; 
+}
+.hero-background-slides img:nth-child(3) {
+    animation-delay: 16.66s; 
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    } 
+    10% {
+        opacity: 1;
+        visibility: visible;
+    } 
+    30% {
+        opacity: 1;
+        visibility: visible;
+    } 
+    40% {
+        opacity: 0;
+        visibility: hidden;
+    } 
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    } 
+}
+
+.hero-overlay { 
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: var(--spacing-unit);
+}
+
+.hero-buttons {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-top: calc(var(--spacing-unit) * 1.5); 
+}
+
+/* --- Grillas (Servicios, Testimonios) --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: calc(var(--spacing-unit) * 1.5); 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: var(--spacing-unit); 
+}
+
+.grid-item {
+    background-color: var(--color-dark-card); 
+    padding: calc(var(--spacing-unit) * 1.5);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(85, 85, 85, 0.7); 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.grid-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    border-color: var(--color-primary); 
+}
+
+/* --- Sección de Servicios --- */
+.service-icon {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-unit);
+}
+
+/* --- Sección Quiénes Somos (About) --- */
+.about-section {
+    background-color: var(--color-white); 
+    color: var(--color-text-dark);
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: calc(var(--spacing-unit) * 2); 
+    text-align: left;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    margin-bottom: 0; 
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 3px solid var(--color-primary);
+    display: block; 
+}
+
+.about-text {
+    flex: 2;
+}
+
+.about-text h2 {
+    text-align: left;
+    color: var(--color-dark-bg); 
+}
+
+.about-text p {
+    color: var(--color-text-dark);
+}
+
+/* --- Sección de Galería de Reels/Videos --- */
+.reels-gallery-section {
+    padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+    text-align: center;
+    background-color: transparent; /* Permite que el background de body se vea */
+    color: var(--color-text-light); /* Texto claro para esta sección oscura */
+    position: relative; /* Es importante que tenga position para que ::before funcione */
+    z-index: 1; /* Para que esté sobre el fondo principal del body */
+}
+
+/* Pseudo-elemento para el fondo oscuro */
+.reels-gallery-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Fondo oscuro como en otras secciones */
+    z-index: -1;
+}
+
+/* Ajuste del título para que sea como otros h2 en secciones oscuras */
+.reels-gallery-section h2 {
+    color: var(--color-primary); /* Títulos en dorado */
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Consistente con otros h2 */
+    margin-bottom: calc(var(--spacing-unit) * 2); /* Espaciado consistente */
+}
+
+.reels-gallery-section .section-description {
+    color: var(--color-text-light); /* Descripción en blanco suave */
+    margin-bottom: calc(var(--spacing-unit) * 2); /* Espaciado consistente */
+}
+
+.reels-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(var(--spacing-unit) * 1.5); /* Espacio entre los Reels */
+    max-width: 1200px; /* Ancho máximo para la cuadrícula */
+    margin: 0 auto; /* Centrar la cuadrícula */
+    padding-top: var(--spacing-unit); /* Espaciado superior */
+}
+
+.instagram-reel-wrapper {
+    /* Contenedor para cada video, manteniendo el nombre de clase por compatibilidad con HTML anterior */
+    background-color: var(--color-dark-card); /* Fondo semi-transparente para cada video */
+    padding: calc(var(--spacing-unit) * 0.75); /* Espaciado interno */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(85, 85, 85, 0.7); /* Borde sutil */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 380px; /* Ancho máximo para cada video (ajusta si es necesario) */
+    width: 100%; /* Ocupa todo el ancho disponible hasta el max-width */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    overflow: hidden; /* Asegura que el contenido del video no se desborde */
+}
+
+.instagram-reel-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    border-color: var(--color-primary); /* Borde dorado al pasar el cursor */
+}
+
+/* ESTILOS CLAVE PARA EL VIDEO LOCAL */
+.instagram-reel-wrapper video {
+    width: 100%;
+    height: auto; /* Mantiene la proporción del video */
+    display: block; /* Elimina cualquier espacio extra debajo del video */
+    border-radius: 5px; /* Pequeño borde redondeado para el video, similar al contenedor */
+}
+
+/* --- Sección de Galería de Sonrisas (anteriormente Testimonios) --- */
+.testimonials-section-dark-section {
+    /* Ya hereda de .dark-section y se ve oscuro con el pseudo-elemento ::before */
+}
+
+/* Nuevos estilos para la cuadrícula de la galería */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el tamaño mínimo de la columna si tus imágenes son más grandes/pequeñas */
+    gap: calc(var(--spacing-unit) * 1.5); /* Espacio entre las imágenes */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: var(--spacing-unit); 
+}
+
+/* Nuevo estilo para cada item de la galería (el contenedor de la imagen) */
+.gallery-image-item {
+    background-color: var(--color-dark-card); /* Fondo oscuro semitransparente como en tus grid-item */
+    padding: var(--spacing-unit); /* Espaciado interno */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(85, 85, 85, 0.7); /* Borde sutil */
+    display: flex; /* Para centrar la imagen dentro */
+    flex-direction: column; /* Para centrar la imagen */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    text-align: center; /* Por si añades algo de texto luego */
+    overflow: hidden; /* Asegura que la imagen no se desborde si tiene border-radius */
+}
+
+.gallery-image-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    border-color: var(--color-primary); /* Borde dorado al pasar el cursor */
+}
+
+/* Nuevo estilo para las imágenes de la galería */
+.client-photo-gallery {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: 250px; /* **Ajusta esta altura para que las imágenes se vean bien sin distorsión** */
+    object-fit: cover; /* Recorta la imagen para que cubra el área sin distorsión */
+    border-radius: 5px; /* Bordes ligeramente redondeados para las fotos */
+    display: block; /* Elimina cualquier espacio extra */
+    border: 2px solid var(--color-primary); /* Borde dorado alrededor de la foto */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    transition: transform 0.3s ease;
+}
+
+.client-photo-gallery:hover {
+    transform: scale(1.03); /* Ligerísimo zoom al pasar el ratón */
+}
+
+/* Estilos para el enlace de la galería para que no afecte la imagen */
+.gallery-image-item a {
+    display: block; /* Para que el enlace ocupe todo el espacio del contenedor */
+    line-height: 0; /* Para eliminar cualquier espacio extra debajo de la imagen si lo hay */
+    border: none; /* Asegura que no haya borde predeterminado */
+    text-decoration: none; /* Asegura que no haya subrayado */
+}
+
+
+/* --- Sección de Contacto --- */
+.contact-info-section {
+    padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
+    text-align: center;
+    color: var(--color-text-light);
+    position: relative; /* Asegura que el z-index funcione para el pseudo-elemento */
+    z-index: 1; /* Para que esté sobre el fondo principal */
+}
+
+.contact-info-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+    z-index: -1;
+}
+
+.contact-info-short {
+    font-size: clamp(0.9rem, 2vw, 1em);
+    margin-top: calc(var(--spacing-unit) * 2);
+    color: var(--color-text-light);
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* --- Footer --- */
+footer {
+    color: var(--color-text-light);
+    text-align: center;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+    font-size: 0.9em;
+    border-top: 2px solid #555555;
+    position: relative;
+    z-index: 0; /* Asegura que esté por debajo de las secciones con z-index 1 */
+}
+
+footer::before {
+    content: ""; /* Asegura que el pseudo-elemento se genere */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: -1; /* Mismo z-index que el padre para el fondo */
+}
+
+.footer-links {
+    margin-top: var(--spacing-unit);
+}
+
+.footer-links a {
+    color: var(--color-text-light);
+    font-size: clamp(1.2em, 3vw, 1.5em);
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+
+/* --- Media Queries (Responsividad) --- */
+
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row; 
+        text-align: left;
+    }
+    .about-text h2 {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ajustes generales para pantallas medianas (tablets) */
+    .reels-grid {
+        gap: var(--spacing-unit); /* Reduce el espacio entre Reels en pantallas más pequeñas */
+    }
+    .instagram-reel-wrapper {
+        max-width: 90%; /* Permite que cada video ocupe más ancho en móviles/tablets */
+        margin: 0 auto; /* Centrar individualmente */
+    }
+    .gallery-grid {
+        gap: var(--spacing-unit);
+    }
+    .gallery-image-item {
+        max-width: 90%; /* Permite que cada imagen ocupe más ancho en móviles/tablets */
+        margin: 0 auto; /* Centrar individualmente */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Ajustes generales para pantallas pequeñas (móviles) */
+    .hero-content {
+        padding: calc(var(--spacing-unit) * 0.75);
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content h2 {
+        font-size: 1rem;
+    }
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    .cta-button {
+        font-size: 1rem;
+        padding: calc(var(--spacing-unit) * 0.6) calc(var(--spacing-unit) * 1.2);
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    p {
+        font-size: 0.95rem;
+    }
+    .section-description {
+        font-size: 1rem;
+        margin: calc(var(--spacing-unit) * -0.5) auto calc(var(--spacing-unit) * 1.5) auto;
+    }
+    .about-content {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+    }
+    .about-text h2 {
+        text-align: center; 
+    }
+    .about-image {
+        margin-bottom: var(--spacing-unit) * 1.5;
+    }
+
+    .reels-gallery-section {
+        padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 0.75);
+    }
+    .reels-gallery-section h2 {
+        font-size: 1.8rem;
+    }
+    .reels-gallery-section .section-description {
+        font-size: 1rem;
+    }
+
+    .gallery-grid {
+        /* No es necesario cambiar la dirección aquí si el minmax ya lo ajusta bien */
+    }
+    .gallery-image-item {
+        max-width: 100%; /* Permite que las imágenes ocupen todo el ancho en móviles muy pequeños */
+    }
+}
